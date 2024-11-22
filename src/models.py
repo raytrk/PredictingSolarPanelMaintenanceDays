@@ -23,16 +23,18 @@ pd.set_option("display.precision", 2)
 def prepare_data(df):
     # Split and scale the data
 
+    SS = StandardScaler()
+
     train, test = train_test_split(
         df, test_size=0.3, random_state=21, shuffle=True
     )
 
-    X_train = StandardScaler().fit_transform(
+    X_train = SS.fit_transform(
         train.drop(columns='Daily Solar Panel Efficiency')
     )
     y_train = train['Daily Solar Panel Efficiency'].values
 
-    X_test = StandardScaler().fit_transform(
+    X_test = SS.transform(
         test.drop(columns='Daily Solar Panel Efficiency')
     )
     y_test = test['Daily Solar Panel Efficiency'].values
