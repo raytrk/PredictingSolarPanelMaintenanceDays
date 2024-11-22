@@ -7,6 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.svm import SVC
+from sklearn.decomposition import PCA
 from scipy.stats import randint
 import pandas as pd
 import numpy as np
@@ -38,6 +39,11 @@ def prepare_data(df):
         test.drop(columns='Daily Solar Panel Efficiency')
     )
     y_test = test['Daily Solar Panel Efficiency'].values
+
+    # Apply PCA
+    pca = PCA(n_components=4)
+    X_train = pca.fit_transform(X_train)
+    X_test = pca.transform(X_test)
 
     return X_train, X_test, y_train, y_test
 

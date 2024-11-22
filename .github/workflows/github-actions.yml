@@ -1,4 +1,4 @@
-name: AIAP Assessment 2
+name: Predict Solar Panel Efficiency
 on: [push, workflow_dispatch]
 
 jobs:
@@ -13,7 +13,3 @@ jobs:
           pip install -r requirements.txt
       - name: Run executable bash script
         run: bash ./run.sh
-      - name: Assessment 2 Reminder
-        run: |
-          echo "Reminder to add AISG-AIAP as a collaborator in your repository"
-          echo "Once your submission is complete, fill up the form provided in the Assessment 2 document"
